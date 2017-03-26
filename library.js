@@ -6,6 +6,7 @@ const passport = module.parent.require('passport');
 const PassportLocal = module.parent.require('passport-local');
 const db = module.parent.require('./database');
 const user = module.parent.require('./user');
+const meta = module.parent.require('./meta');
 
 const Tedious = require('tedious');
 const Request = Tedious.Request;

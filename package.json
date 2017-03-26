@@ -1,6 +1,6 @@
 {
 	"name": "nodebb-plugin-ao-auth",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "nodebb plugin for custom auth into aceonline accounts.",
 	"repository": {
 		"type": "git",
