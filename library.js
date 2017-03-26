@@ -120,10 +120,10 @@ module.exports = {
 							user.create({
 								username: res[0].AccountName,
 								email: res[0].email
-							}, next)
+							}, next);
 							return;
 						}
-						next(_uid);
+						next(null, _uid);
 					},
 					function (_uid, next) {
 						if (!_uid) {
