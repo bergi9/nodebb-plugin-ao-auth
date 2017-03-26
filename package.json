@@ -1,0 +1,27 @@
+{
+	"name": "nodebb-plugin-ao-auth",
+	"version": "0.0.1",
+	"description": "nodebb plugin for custom auth into aceonline accounts.",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bergi9/nodebb-plugin-ao-auth"
+	},
+	"main": "library.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"nbbpm": {
+		"compatibility": "^1.0.0"
+	},
+	"keywords": [
+		"nodebb",
+		"auth",
+		"aceonline"
+	],
+	"author": "bergi9 <simonbergi9@gmail.com>",
+	"license": "MIT",
+	"dependencies": {
+		"tedious": "^1.14.0",
+		"tedious-connection-pool": "^1.0.4"
+	}
+}
