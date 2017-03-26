@@ -115,6 +115,15 @@ module.exports = {
 					function (next) {
 						user.getUidByUserslug(res[0].AccountName, next);
 					},
+					function (_uid, next){
+						if(!_uid){
+							user.create({
+								username: res[0].AccountName,
+								email: res[0].email
+							}, next)
+						}
+						next(_uid);
+					},
 					function (_uid, next) {
 						if (!_uid) {
 							return next(new Error('[[error:no-user]]'));
