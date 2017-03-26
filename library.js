@@ -121,6 +121,7 @@ module.exports = {
 								username: res[0].AccountName,
 								email: res[0].email
 							}, next)
+							return;
 						}
 						next(_uid);
 					},
