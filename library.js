@@ -110,6 +110,9 @@ module.exports = {
 				if(res.length === 0){
 					return next(new Error('[[error:no-user]]'));
 				}
+				if(!res[0].email){
+					return next(new Error('[[error:invalid-email]]'));
+				}
 
 				let uid, userData = {};
 				async.waterfall([
