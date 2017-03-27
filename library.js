@@ -114,17 +114,33 @@ module.exports = {
 					return next(new Error('[[error:invalid-email]]'));
 				}
 
-				let uid, userData = {};
+				let uid, userData = {}, acc = res[0];
 				async.waterfall([
 					function (next) {
-						user.getUidByEmail(res[0].email, next);
+						db.getObjectField('AOUid:uid', acc.AccountUniqueNumber, next);
 					},
 					function (_uid, next){
 						if(!_uid){
-							user.create({
-								username: res[0].AccountName,
-								email: res[0].email
-							}, next);
+							async.waterfall([
+								function(_next){
+									user.getUidByEmail(acc.email, _next);
+								},
+								function(_uid, _next){
+									if(!_uid){
+										user.create({
+											username: acc.AccountName,
+											email: acc.email
+										}, _next);
+										return;
+									}
+									_next(null, _uid);
+								},
+								function(_uid, _next){
+									user.setUserField(_uid, 'AOUid', acc.AccountUniqueNumber);
+									db.setObjectField('AOUid:uid', acc.AccountUniqueNumber, _uid);
+									_next(null, _uid);
+								}
+							], next);
 							return;
 						}
 						next(null, _uid);
