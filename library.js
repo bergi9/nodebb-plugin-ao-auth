@@ -114,7 +114,7 @@ module.exports = {
 				let uid, userData = {};
 				async.waterfall([
 					function (next) {
-						user.getUidByUsername(res[0].AccountName, next);
+						user.getUidByEmail(res[0].email, next);
 					},
 					function (_uid, next){
 						if(!_uid){
