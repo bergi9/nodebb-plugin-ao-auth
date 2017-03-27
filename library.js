@@ -99,7 +99,7 @@ function execSql(sql, types, cb){
 module.exports = {
 	auth: function(){
 		passport.use(new PassportLocal({passReqToCallback: true}, function(req, username, password, next){
-			execSql('SELECT * FROM atum2_db_account.dbo.td_Account WHERE AccountName = @accName AND Password = @password', [
+			execSql('SELECT * FROM atum2_db_account.dbo.td_Account WHERE AccountName = @accName AND Password = @password AND Active = 1', [
 				{ name: 'accName', type: 'VarChar', value: username },
 				{ name: 'password', type: 'VarChar', value: password }
 			], function(err, res){
